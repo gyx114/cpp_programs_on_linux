@@ -85,16 +85,14 @@ int main()
     // Serialize
     ofstream ofs("students.txt");
     boost::archive::text_oarchive oa(ofs);
-    oa << cs << se << students;
+    oa << students;
     ofs.close();
 
     // Deserialize
     vector<Student> restored;
     ifstream ifs("students.txt");
     boost::archive::text_iarchive ia(ifs);
-    Department *cs2 = nullptr;
-    Department *se2 = nullptr;
-    ia >> cs2 >> se2 >> restored;
+    ia >> restored;
 
     cout << "===== Desrialized Data =====" << endl;
     for (const auto &s : restored)
