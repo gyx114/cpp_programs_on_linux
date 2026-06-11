@@ -84,14 +84,14 @@ int main()
 
     // Serialize
     ofstream ofs("students.dat", ios::binary);
-    boost::archive::text_oarchive oa(ofs);
+    boost::archive::binary_oarchive oa(ofs);
     oa << cs << se << students;
     ofs.close();
 
     // Deserialize
     vector<Student> restored;
     ifstream ifs("students.dat");
-    boost::archive::text_iarchive ia(ifs);
+    boost::archive::binary_iarchive ia(ifs);
     Department *cs2 = nullptr;
     Department *se2 = nullptr;
     ia >> cs2 >> se2 >> restored;
